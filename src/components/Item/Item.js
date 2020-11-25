@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import ItemCount from '../ItemCount/ItemCount';
 import { useCartContext } from '../../contexts/CartContext/CartContext';
@@ -19,9 +20,11 @@ function Item({ categoryId, description, discount, id, image, price, stock, titl
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
-                    <p>description: {description} </p>
-                    <p>price: {price} </p>
-                    <p>discount: {discount} </p>
+                    <div className="row">
+                    <del className="col-9">price: ${price} </del>
+                    <Badge variant="warning" >-{discount}%</Badge> 
+                    <h4 className="col-12 text-center"> ${Math.round(price * ((100 - discount) / 100) * 100) / 100}</h4>
+                    </div>
                 </Card.Text>
                 <ItemCount
                     inmaxmin={inmaxmin} thisCart={thisCart}

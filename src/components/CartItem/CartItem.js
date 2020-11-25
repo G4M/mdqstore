@@ -15,10 +15,10 @@ function CartItem({ item }) {
     return ( item.totalCash? <></> :
         <React.Fragment>
             <div className="row">
-            <div className="Item card col-3">
+            <div className="Item card col-2">
                 <Card.Img variant="top" src={"." + item.image} />
             </div>
-            <div className="Item card col-9">
+            <div className="Item card col-10">
                 <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
                     <Card.Text>

@@ -23,10 +23,11 @@ function ItemList() {
     })
       .catch((error) => console.log(error))
       .finally(() => { });
-  }, [])
+  }
+    , [])
 
   return (
-    loading ? <div className="container"><Spinner animation="grow" size="sm"/><p>Loading...</p><Spinner animation="border" size="sm" /> </div> :
+    loading ? <div className="container"><Spinner animation="grow" size="sm" /><p>Loading...</p><Spinner animation="border" size="sm" /> </div> :
       <React.Fragment>
         <div className="ItemList">
           <div className="container col-12">
