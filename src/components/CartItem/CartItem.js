@@ -5,7 +5,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { useCartContext } from '../../contexts/CartContext/CartContext';
 
 function CartItem({ item }) {
-    const { inmaxmin, updateCart } = useCartContext();
+    const { inmaxmin, killCartItem, updateCart } = useCartContext();
 
     const [thisCart, setthisCart] = useState(inmaxmin[0]);
     function updateThisCart(count) {
@@ -20,6 +20,7 @@ function CartItem({ item }) {
             </div>
             <div className="Item card col-10">
                 <Card.Body>
+                <button className="btn btn-primary float-right" onClick={() => killCartItem(item.id)}>x</button>
                     <Card.Title>{item.title}</Card.Title>
                     <Card.Text>
                         <p>description: {item.description} </p>

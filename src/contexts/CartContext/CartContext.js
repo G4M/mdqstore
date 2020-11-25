@@ -18,6 +18,16 @@ export function CartContexProvider({ children }) {
     console.log(cartContent);
   }
 
+  function killCartItem(id) {
+    const isOnCart = cartContent.find(item => item.id === id);
+    let actualCartContent = cartContent;
+    if (isOnCart) {
+      let indice = actualCartContent.indexOf(isOnCart);
+      actualCartContent.splice(indice, 1);
+      setCartContent(actualCartContent)
+      totalCart();
+  }else{console.log("Error Item Id not Founded")}}
+
   function updateCart(categoryId, description, discount, id, image, price, stock, title, cant) {
     const newProduct = {
       "categoryId": categoryId,
@@ -48,7 +58,7 @@ export function CartContexProvider({ children }) {
   }
 
   return <>
-    <CartContext.Provider value={{ updateCart, inmaxmin, cartContent,hookTotal}} >
+    <CartContext.Provider value={{ updateCart, inmaxmin, cartContent,hookTotal,killCartItem}} >
       {children}
     </CartContext.Provider>
   </>
