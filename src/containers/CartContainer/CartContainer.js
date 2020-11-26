@@ -13,8 +13,10 @@ function CartContainer() {
     }, [])
     return ( showContent.length===1? <CartEmpty/> :
         <React.Fragment>
-            <h3>Total: {totals.totalCash}</h3>
-            <h4>Items: {totals.totalItems}</h4>
+            <div className="row border m-3 justify-content-around">
+            <h3 >Total Cart: ${totals.totalCash}</h3>
+            <h4 >{totals.totalItems} items</h4>
+            </div>
             {showContent.map((item, index) => <CartItem key={index} updateCart={updateCart} item={item} />)}
         </React.Fragment>
     )
