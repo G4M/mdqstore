@@ -25,7 +25,7 @@ function CartItem({ item }) {
                     <Card.Text>
                         <p>Description: {item.description} </p>
                         <div className="row border">
-                        <p className="col-4">Price: {item.price} </p>
+                        <p className="col-4">Price: ${item.price} </p>
                         <p className="col-4">-{item.discount}%</p>
                         <p className="col-2">=</p>
                         <p className="col-2">{item.price*((100-item.discount)/100)}</p>

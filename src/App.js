@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './containers/CartContainer/CartContainer';
+import Categorys from './containers/CategoryContainer/CategoryContainer';
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/Cart">
             <CartContainer />
+          </Route>
+          <Route path="/Categorys/:categoryId">
+            <Home />
           </Route>
         </Switch>
       </CartContexProvider>

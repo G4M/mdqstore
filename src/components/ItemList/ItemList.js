@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { GetDBFireBase } from "../../Tools/firebase";
 import Item from '../Item/Item';
 import Spinner from 'react-bootstrap/Spinner';
+import { useParams } from 'react-router-dom';
 
-function ItemList() {
+function ItemList(params) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const {categoryId} = useParams();
+  
   useEffect(() => {
-    const getprods = GetDBFireBase().collection("Productos");
+    let getprods;
+    categoryId? getprods = GetDBFireBase().collection("Productos").where("categoryId", "==",parseInt(categoryId)) :
+    getprods = GetDBFireBase().collection("Productos");
 
     getprods.get().then((result) => {
       if (result.size === 0) {
@@ -24,7 +28,7 @@ function ItemList() {
       .catch((error) => console.log(error))
       .finally(() => { });
   }
-    , [])
+    , [categoryId])
 
   return (
     loading ? <div className="container"><Spinner animation="grow" size="sm" /><p>Loading...</p><Spinner animation="border" size="sm" /> </div> :
@@ -34,6 +38,7 @@ function ItemList() {
             <div className="row">
               {products.map((item, index) => <Item
                 key={index}
+                cat={categoryId}
                 categoryId={item.categoryId}
                 description={item.description}
                 discount={item.discount}

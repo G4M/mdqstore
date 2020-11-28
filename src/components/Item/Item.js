@@ -6,7 +6,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { useCartContext } from '../../contexts/CartContext/CartContext';
 import { Link } from 'react-router-dom';
 
-function Item({ categoryId, description, discount, id, image, price, stock, title }) {
+function Item({ cat, categoryId, description, discount, id, image, price, stock, title }) {
     const { inmaxmin, updateCart } = useCartContext();
     const [thisCart, setthisCart] = useState(inmaxmin[0]);
     function updateThisCart(count) {
@@ -14,8 +14,10 @@ function Item({ categoryId, description, discount, id, image, price, stock, titl
     }
     return (
         <div className="Item card col-md-2 col-sm-6 col-xs-12 mt-1">
-            <Link to={"/item/"+id}> 
-                <Card.Img variant="top" src={image} />
+            <Link to={"/item/"+id}>
+                {cat? 
+                <Card.Img variant="top" src={"../"+image} /> : 
+                <Card.Img variant="top" src={image} />}
             </Link>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
