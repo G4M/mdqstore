@@ -15,7 +15,6 @@ function CheckOut() {
     const [orders, setOrders] = useState(false);
 
     function postOrder(evnt) {
-        evnt.preventDefault();
         const userInfo = {
             "name": document.getElementById("formName").value,
             "phone": document.getElementById("formCellphone").value,
@@ -88,12 +87,14 @@ function CheckOut() {
                                 We'll never share your email or personal information with anyone else.
                     </Form.Text>
                         </Form.Group>
-                        <Button variant="primary" type="submit" onClick={(evnt) => (postOrder(evnt))} >
+                        <Button disabled={orders} variant="primary" onClick={(evnt) => (postOrder(evnt))} >
                             Confirm Order
                         </Button>
-                        <Button variant="primary" onClick={() => (alert(orders))} >
-                            view Order
-                        </Button>
+                        {orders ? <Form.Text className="text-muted">
+                            Your Order Id is: {orders}
+                        </Form.Text> :
+                            <></>
+                        }
                     </Form>
 
 
