@@ -20,6 +20,7 @@ function NavBar() {
       }
       const documents = result.docs.map(doc => ({ ...doc.data(), idFirebase: doc.id }));
       setCategorys(documents);
+      localStorage.setItem("categorys",JSON.stringify(documents))
     })
       .catch((error) => console.log(error))
       .finally(() => { });
@@ -38,8 +39,8 @@ function NavBar() {
         <NavDropdown title="categorys" id="collasible-nav-dropdown">
           {categorys ?
             categorys.map((item, index) =>
-              <NavDropdown.Item key={item.id+index} >
-                <Link to={"/categorys/" + item.id}>
+              <NavDropdown.Item key={"Cat"+item.id+index} >
+                <Link to={"/categorys/" + item.name}>
                   {item.name}
                 </Link>
               </NavDropdown.Item>

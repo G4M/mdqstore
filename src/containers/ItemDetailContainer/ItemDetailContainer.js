@@ -15,13 +15,9 @@ function ItemDetailContainer() {
         thisOne.get().then((result) => {
             if (result.exist) {
                 console.log("Sin resultados - Result:");
-                console.log(result);
                 return;
             }
-            console.log("Founded: ");
-            console.log(result);
             const documents = ({ id: result.id, ...result.data() })
-            console.log(documents);
             //const documents = result.docs.map(doc => ({ ...doc.data(), id: doc.id }));
             setItem(documents);
 

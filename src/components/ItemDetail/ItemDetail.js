@@ -12,12 +12,6 @@ function ItemDetail({ itemId }) {
         setthisCart(thisCart + count)
     }
 
-    useEffect(() => {
-        console.log("ItemDetail: ");
-        console.log({ itemId });
-    }, [])
-
-
     return (
         <React.Fragment>
             <div className="row">

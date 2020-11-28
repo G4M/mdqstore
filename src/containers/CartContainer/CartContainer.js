@@ -9,10 +9,6 @@ function CartContainer() {
     const totals = cartContent[cartContent.length - 1];
     let showContent = cartContent;
 
-    useEffect(() => {
-        console.log(showContent);
-    }, [])
-
     return ( showContent.length===1? <CartEmpty/> :
         <React.Fragment>
             <div className="row border m-3 justify-content-around">

@@ -52,9 +52,7 @@ function CheckOut() {
 
         for (let index = 0; index < cartContent.length - 1; index++) {
             let item = cartContent[index];
-            console.log(item);
             let article = GetDBFireBase().collection('Productos').doc(item.id);
-            console.log(article);
             let transaction = GetDBFireBase().runTransaction(t => {
                 return t.get(article)
                     .then(doc => {

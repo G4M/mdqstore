@@ -15,7 +15,6 @@ export function CartContexProvider({ children }) {
     actualContent.push({"totalCash":total, "totalItems":items});
     setCartContent(actualContent)
     setHookTotal(items);
-    console.log(cartContent);
   }
 
   function killCartItem(id) {

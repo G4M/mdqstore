@@ -8,10 +8,12 @@ function ItemList(params) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const {categoryId} = useParams();
-  
+  let categorys = JSON.parse(localStorage.getItem('categorys'));
+
   useEffect(() => {
+    const isOnCat = categorys.find(item => item.name === categoryId);
     let getprods;
-    categoryId? getprods = GetDBFireBase().collection("Productos").where("categoryId", "==",parseInt(categoryId)) :
+    categoryId? getprods = GetDBFireBase().collection("Productos").where("categoryId", "==",parseInt(isOnCat.id)) :
     getprods = GetDBFireBase().collection("Productos").limit(100);
 
     getprods.get().then((result) => {
@@ -37,7 +39,7 @@ function ItemList(params) {
           <div className="container col-12">
             <div className="row">
               {products.map((item, index) => <Item
-                key={index}
+                key={item.id+index}
                 cat={categoryId}
                 categoryId={item.categoryId}
                 description={item.description}
