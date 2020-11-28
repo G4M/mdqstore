@@ -38,7 +38,7 @@ function NavBar() {
         <NavDropdown title="Categorys" id="collasible-nav-dropdown">
           {categorys ?
             categorys.map((item, index) =>
-              <NavDropdown.Item>
+              <NavDropdown.Item key={item.id+index} >
                 <Link to={"/Categorys/" + item.id}>
                   {item.name}
                 </Link>

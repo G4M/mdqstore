@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCartContext } from '../../contexts/CartContext/CartContext';
 import CartItem from '../../components/CartItem/CartItem';
 import CartEmpty from '../../components/CartEmpty/CartEmpty';
+import CheckOut from '../../components/CheckOut/CheckOut';
 
 function CartContainer() {
     const { cartContent, updateCart } = useCartContext();
@@ -11,6 +12,7 @@ function CartContainer() {
     useEffect(() => {
         console.log(showContent);
     }, [])
+
     return ( showContent.length===1? <CartEmpty/> :
         <React.Fragment>
             <div className="row border m-3 justify-content-around">
@@ -18,6 +20,7 @@ function CartContainer() {
             <h4 >{totals.totalItems} items</h4>
             </div>
             {showContent.map((item, index) => <CartItem key={index} updateCart={updateCart} item={item} />)}
+            <CheckOut/>
         </React.Fragment>
     )
 }

@@ -12,7 +12,7 @@ function ItemList(params) {
   useEffect(() => {
     let getprods;
     categoryId? getprods = GetDBFireBase().collection("Productos").where("categoryId", "==",parseInt(categoryId)) :
-    getprods = GetDBFireBase().collection("Productos");
+    getprods = GetDBFireBase().collection("Productos").limit(100);
 
     getprods.get().then((result) => {
       if (result.size === 0) {
