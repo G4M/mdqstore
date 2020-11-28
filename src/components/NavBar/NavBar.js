@@ -35,18 +35,18 @@ function NavBar() {
         <Link to={"/"}>
           <Nav.Link href="/" >Home</Nav.Link>
         </Link>
-        <NavDropdown title="Categorys" id="collasible-nav-dropdown">
+        <NavDropdown title="categorys" id="collasible-nav-dropdown">
           {categorys ?
             categorys.map((item, index) =>
               <NavDropdown.Item key={item.id+index} >
-                <Link to={"/Categorys/" + item.id}>
+                <Link to={"/categorys/" + item.id}>
                   {item.name}
                 </Link>
               </NavDropdown.Item>
             ) : <></>}
         </NavDropdown>
       </Nav>
-      <Link to={"/Cart"}>
+      <Link to={"/cart"}>
         <Button variant="outline-primary">Cart {hookTotal} </Button>
       </Link>
     </Navbar>
