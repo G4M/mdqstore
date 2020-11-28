@@ -15,6 +15,7 @@ function CheckOut() {
     const [orders, setOrders] = useState(false);
 
     function postOrder(evnt) {
+        evnt.preventDefault();
         const userInfo = {
             "name": document.getElementById("formName").value,
             "phone": document.getElementById("formCellphone").value,
@@ -76,8 +77,8 @@ function CheckOut() {
                                 <Form.Control type="text" placeholder="Enter your Name" required />
                             </Form.Group>
                             <Form.Group controlId="formCellphone">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your Last Name" required />
+                                <Form.Label>Cell Phone</Form.Label>
+                                <Form.Control type="text" placeholder="Enter your Cell Phone Number" required />
                             </Form.Group>
                         </Form.Row>
                         <Form.Group controlId="formEmail">
