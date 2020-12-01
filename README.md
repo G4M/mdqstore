@@ -12,7 +12,8 @@ Levantar en [http://localhost:3000](http://localhost:3000/) para verla en el bro
 
 ## Librerías
 
-Se ultilizó la librería de Bootstrap a fin de proporcionarle al proyecto una estética adecuada.
+Se ultilizó la librería de Bootstrap a fin de proporcionarle al proyecto una estética adecuada.<br>
+`npm i react-bootstrap`<br>`npm i bootstrap`
 
 ## Cómo debería verse
 
