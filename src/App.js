@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Home from './containers/Home/Home';
 import { CartContexProvider } from './contexts/CartContext/CartContext';

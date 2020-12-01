@@ -30,7 +30,8 @@ function ItemList(params) {
       .catch((error) => console.log(error))
       .finally(() => { });
   }
-    , [categoryId])
+  // eslint-disable-next-line
+    , [])
 
   return (
     loading ? <Loading/> :

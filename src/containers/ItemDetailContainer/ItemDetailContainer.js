@@ -21,13 +21,13 @@ function ItemDetailContainer() {
           return;
         }
         const documents = { id: result.id, ...result.data() };
-        //const documents = result.docs.map(doc => ({ ...doc.data(), id: doc.id }));
         setItem(documents);
       })
       .catch((error) => console.log(error))
       .finally(() => {
         setLoader(false);
       });
+      // eslint-disable-next-line
   }, []);
 
   return (
