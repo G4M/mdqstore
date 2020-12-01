@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GetDBFireBase } from "../../Tools/firebase";
 import Item from '../Item/Item';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from '../Loading/Loading';
 import { useParams } from 'react-router-dom';
 
 function ItemList(params) {
@@ -33,7 +33,7 @@ function ItemList(params) {
     , [categoryId])
 
   return (
-    loading ? <div className="container"><Spinner animation="grow" size="sm" /><p>Loading...</p><Spinner animation="border" size="sm" /> </div> :
+    loading ? <Loading/> :
       <React.Fragment>
         <div className="ItemList">
           <div className="container col-12">

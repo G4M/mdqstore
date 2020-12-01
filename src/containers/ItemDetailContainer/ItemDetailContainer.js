@@ -1,37 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import ItemDetail from '../../components/ItemDetail/ItemDetail';
-//import Loading from '../../components/loading/loading';
-import { GetDBFireBase } from '../../Tools/firebase';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import Loading from "../../components/Loading/Loading";
+import { GetDBFireBase } from "../../Tools/firebase";
 
 function ItemDetailContainer() {
-    const { itemId } = useParams();
-    const [item, setItem] = useState(null);
+  const { itemId } = useParams();
+  const [item, setItem] = useState(null);
+  const [loader, setLoader] = useState(true);
 
-    useEffect(() => {
-        const getprods = GetDBFireBase().collection("Productos");
-        const thisOne = getprods.doc(itemId);
+  useEffect(() => {
+    const getprods = GetDBFireBase().collection("Productos");
+    const thisOne = getprods.doc(itemId);
 
-        thisOne.get().then((result) => {
-            if (result.exist) {
-                console.log("Sin resultados - Result:");
-                return;
-            }
-            const documents = ({ id: result.id, ...result.data() })
-            //const documents = result.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-            setItem(documents);
+    thisOne
+      .get()
+      .then((result) => {
+        if (result.data() === undefined) {
+          console.log("Sin resultados - Result:");
+          return;
+        }
+        const documents = { id: result.id, ...result.data() };
+        //const documents = result.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        setItem(documents);
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setLoader(false);
+      });
+  }, []);
 
-        })
-            .catch((error) => console.log(error))
-            .finally(() => { });
-    }, [])
-
-
-    return (
-        <React.Fragment>
-            {item ? <ItemDetail itemId={item} /> : <h1>LoAdInG. . . . </h1>}
-        </React.Fragment>
-    )
+  return (
+    <React.Fragment>
+      {item ? (
+        <ItemDetail itemId={item} />
+      ) : loader ? (
+        <Loading />
+      ) : (
+        <h3>
+          No se encontraron resultados con el id <br /> {itemId} <br /> en la
+          base de datos
+        </h3>
+      )}
+    </React.Fragment>
+  );
 }
 
 export default ItemDetailContainer;

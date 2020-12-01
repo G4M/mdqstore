@@ -5,14 +5,14 @@ import ItemCount from '../ItemCount/ItemCount';
 import { useCartContext } from '../../contexts/CartContext/CartContext';
 
 function ItemDetail({ itemId }) {
-
+    console.log('itemId', itemId)
     const { inmaxmin, updateCart } = useCartContext();
     const [thisCart, setthisCart] = useState(inmaxmin[0]);
     function updateThisCart(count) {
         setthisCart(thisCart + count)
     }
 
-    return (
+    return ( 
         <React.Fragment>
             <div className="row">
             <div className="Item card col-3">
